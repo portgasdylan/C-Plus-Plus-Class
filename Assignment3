@@ -1,0 +1,54 @@
+// JungleApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+// Assignment 2.1: JUMANJI: Welcome to the Jungle with I/O
+
+#include <iostream> // library
+using namespace std; //using std, no need to copy std again
+
+int main() // main function
+{
+    string firstName, lastName, nickname; // String for user to add their first, last and nick name
+    char initial; // Initial for user
+    int age; // User Age
+    string favoriteAnimal; // Favorite Animal
+    double miles; // Miles the user ran
+    char choice; //Choice for user to play again
+
+    //Storyline for program
+    do {
+        cout << "Tribal Leader: Who goes there!?!? What is your name and age?" << endl;
+        cout << "\n You: I don't have to tell you a thing!" << endl;
+        cout << "\nTribal Leader: If you don't I will sacrifice you on the spot." << endl;
+        cout << "\nEnter your first name: " << endl;
+        cin >> firstName;
+        cout << "\nEnter your last name: " << endl;
+        cin >> lastName;
+        cout << "\nHow would you like to be called: " << endl;
+        cin >> nickname;
+        cout << "\nEnter your age: " << endl;
+        cin >> age;
+        cout << "\nOkay okay, no need to be so annoying, my name is " << firstName << " " << lastName << ". You can call me " << nickname << " I guess... I am currently " << age << " years old." << endl;
+        cout << "\nWelcome " << nickname << ". You've seem to have come from far, what business do you have here in the jungle? This is a dangerous place..." << endl;
+        cout << "\nI've come to conquer my fears, I, " << firstName << " " << lastName << " will be the greatest explorer known to man!" << endl;
+        cout << "\n **crickets chirp**" << endl;
+        cout << "\nTribal Leader: Uhh cool I guess, you can take on our jungle survival course." << endl;
+        cout << "\nYou head to the course" << endl;
+        cout << "\nWooww this is one cool course, how'd you make it?" << endl;
+        cout << "\n Tribal Leader: Don't worry about that. Now, tell me your favorite animal: " << endl;
+        cin >> favoriteAnimal;
+        cout << "\nMy favorite animal is the " << favoriteAnimal << "." << endl;
+        cout << "\nTribal Leader: Good. Now get prepared." << endl;
+        cout << "\nSuddenly you are chased by a " << favoriteAnimal << "." << endl;
+        cout << "\n How many miles will you run for: " << endl;
+        cin >> miles;
+        cout << "\nYou run for " << miles << " miles. You then accidentally fall into water but are suddenly woken up. You were in a dream." << endl;
+        cout << "\n Would you like to play again? (y/n)";
+        cin >> choice;
+
+    } while (choice == 'y');
+
+
+
+}
+
