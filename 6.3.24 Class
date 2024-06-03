@@ -1,0 +1,55 @@
+// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+//Dylan Maxwell
+//Fourth Week Code
+//6.3.24
+
+#include <iostream> // library
+#include <Windows.h>
+using namespace std; //using std, no need to copy std again
+
+int main()
+{
+    string firstName, lastName, nickname; // String for user to add their first, last and nick name
+    char favoriteLetter; // favorite letter
+    int age; // User Age
+    int time; // Current Time
+    string favoriteAnimal; // Favorite Animal
+    double pets; // Weapons the user has
+    int day; // Day of the week
+    int myArray[5] = { 1,2,3,4,5 };
+    string myPets[5] = { "Cats","Dogs","Birds","Hamsters","Rats" };
+
+    //to generate random numbers there are two steps
+    //1 seed the random number generator
+    srand(time(0));
+    string professors[10] = { "Professor1","Professor2","Professor3","Professor4"};
+
+
+    cout << myArray[0];
+    cout << myArray[3];
+    cout << myPets[1];
+
+    for (int i = 0; i < 10; i++) {
+        cout << professors[i];
+    }
+
+    // please guess a number 1-10
+
+    //2
+    int selectedProfessor = rand() % 10 + 1; //generate a number 1-10
+
+    //if (selectedProfessor == guess) -> you win
+
+    Beep(1000, 1000); // herts,milliseconds
+
+
+
+
+        for (int i = 1; i < 100; i = i+2) {
+            cout << i << endl;
+        }
+
+
+    }
