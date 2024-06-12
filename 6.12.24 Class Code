@@ -1,0 +1,87 @@
+// ConsoleApplication4.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <Windows.h>
+using namespace std;
+
+int main()
+{
+    // Delcare and Initialize a string
+    string myString = "Welcome to UAT";
+    // print the original string
+    cout << "Original String;" << myString << endl;
+
+    //use the append()-- add to the string
+    myString.append(" Enjoy your visit.");
+    cout << "Original String after append: " << myString << endl;
+
+    //use the substr() method to get substr
+    string subString = myString.substr(7, 7); // get substring starting at index 7 and length is 7
+    cout << "Substring extracted using substr(): " << subString << endl;
+
+    // use the compare() method to compare two strings
+    string anotherString = "Welcome to UAT";
+    int result = myString.compare(anotherString);
+    if (result == 0) {
+        cout << "The strings are equal" << endl;
+    }
+    else if (result < 0) {
+        cout << "myString is less than anotherString" << endl;
+    }
+    else {
+        cout << "myString is greather than another string" << endl;
+    }
+
+    string str1 = "This is C language";
+    string str2 = "C++";
+    cout << "Before replacement, string is:" << str1 << '\n';
+    str1.replace(8, 1, str2);
+    cout << "After replacement, string is:" << str1 << '\n';
+    return 0;
+
+    string str4 = "This is C Language";
+        string str3 = "java language";
+        cout << "Before replacement, String is " << str4 << '\n';
+        str4.replace(8, 1, str3, 0, 4);
+        cout << "After replacement, String is " << str4 << '\n';
+        return 0;
+
+        const int rows = 3;
+    const int cols = 3;
+    int myArray[rows][cols];
+
+    //Fill the 2d array with the users input
+    cout << "Enter elements for this 3*3 array:" << endl;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            myArray[i][j] = rand() % 100 + 1;
+
+        }
+    }
+
+    //Print out the 2d Array elements
+    cout << "Elements of the array 3*3 array: " << endl;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            cout << myArray[i][j];
+        }
+    }
+
+    //In rgw gomwqoek we need an array for number of professors[10]
+    //fill array w/ random numbers 1-20
+    //example of this array[2,11,14,7,9,1,13,18,20,8]
+    //when will you win?? if your guess is in the array
+
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
