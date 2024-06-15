@@ -1,0 +1,83 @@
+ q// This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream> //Library for I/O Operations
+#include <Windows.h> // Library for WIndow-specific funtions / beep
+#include <ctime> // Library for random number generation
+#include <cstdlib> // Library for seeding random number generation
+
+using namespace std;
+
+
+//Function fror bell
+void ringBell() {
+    Beep(1000, 1000); // Frequency of 1000 Hz for 1 second
+}
+
+int main()
+{
+    // Seed the random number generator
+    srand(static_cast<unsigned int>(time(0)));
+
+    // Array of 10 UAT professors
+    const int numProfessors = 10;
+    string professors[numProfessors] = {
+        "Professor Battana",
+        "Professor Belanger",
+        "Professor Brokaw",
+        "Professor Clark",
+        "Professor Crusoe",
+        "Professor Habib",
+        "Professor Hinton",
+        "Professor Peters",
+        "Professor Portillo",
+        "Professor Vosteen"
+    };
+
+    bool keepRunning = true;
+
+    while (keepRunning) {
+        cout << "Welcome to the UAT Classroom Simulation!\n";
+        cout << "Here is a list of professors you might meet today:\n";
+
+        // List the professors
+        for (int i = 0; i < numProfessors; ++i) {
+            cout << (i + 1) << ". " << professors[i] << endl;
+        }
+
+        // Ask the user to guess which professor will visit their classroom
+        int userGuess;
+        cout << "\nGuess which professor will visit your classroom (Enter a number between 1 and 10): ";
+        cin >> userGuess;
+
+        // Generate a random number to pick the visiting professor
+        int visitingProfessorIndex = rand() % numProfessors;
+        string visitingProfessor = professors[visitingProfessorIndex];
+
+        // Evaluate the user's guess
+        if (userGuess - 1 == visitingProfessorIndex) {
+            cout << "Congratulations! You guessed correctly! " << visitingProfessor << " is visiting your classroom.\n";
+        }
+        else {
+            cout << "Sorry, your guess was incorrect. " << visitingProfessor << " is visiting your classroom.\n";
+        }
+
+        // Ring the bell to signal the end of the classroom portion of the tour
+        cout << "The class is over. Ringing the bell...\n";
+        ringBell();
+
+        // Ask the user if they want to run the simulation again
+        char userChoice;
+        cout << "Would you like to run the simulation again? (y/n): ";
+        cin >> userChoice;
+
+        if (userChoice != 'y' && userChoice != 'Y') {
+            keepRunning = false;
+        }
+
+        cout << endl; 
+    }
+
+    cout << "Thank you for visiting UAT! Goodbye.\n";
+    return 0;
+}
