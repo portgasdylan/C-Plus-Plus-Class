@@ -1,0 +1,84 @@
+// This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream> //Library for I/O Operations
+#include <Windows.h> // Library for WIndow-specific funtions / beep
+#include <ctime> // Library for random number generation
+#include <cstdlib> // Library for seeding random number generation
+
+using namespace std;
+
+
+//Function fror bell
+void ringBell() {
+    Beep(1000, 1000); // Frequency of 1000 Hz for 1 second
+}
+
+int main()
+{
+    // Seed the random number generator
+    srand(static_cast<unsigned int>(time(0)));
+
+    // Array of 10 UAT professors
+    string professors[10] = {
+        "Professor Battana",
+        "Professor Belanger",
+        "Professor Brokaw",
+        "Professor Clark",
+        "Professor Crusoe",
+        "Professor Habib",
+        "Professor Hinton",
+        "Professor Peters",
+        "Professor Portillo",
+        "Professor Vosteen"
+    };
+
+    const int numClassrooms = 20;
+    int proffesorClassroms = [10];
+
+    bool keepRunning = true;
+
+    while (keepRunning) {
+        cout << "Welcome to the UAT Classroom Simulation!\n";
+
+        // Ask the user to guess which professor will visit their classroom
+        int professorIndex;
+        cout << "Enter the number of the professor you want to guess for (1-10):";
+        cin >> professorIndex;
+
+        int userGuess;
+        cout << "Guess which classroom " << professors[professorIndex - 1] << " will be in (Enter a number between 1 and 20): ";
+        cin >> userGuess;
+
+        // Ring the bell to signal the end of the classroom portion of the tour
+        cout << "Time to see if you're right!\n";
+        ringBell();
+
+        for (int i = 0; i < 10; ++i) {
+            professorClassrooms[i] = rand() % numClassrooms;
+        }
+
+        if (userGuess - 1 == professorClassrooms[professorIndex-1]) {
+            cout << "You guessed correctly! ";
+        } else {
+            cout << "Sorry that professor wasn't there. "
+        }
+
+
+
+        // Ask the user if they want to run the simulation again
+        char userChoice;
+        cout << "\nWould you like to run the simulation again? (y/n): ";
+        cin >> userChoice;
+
+        if (userChoice != 'y' && userChoice != 'Y') {
+            keepRunning = false;
+        }
+
+        cout << endl; 
+    }
+
+    cout << "Thank you for visiting UAT! Goodbye.\n";
+    return 0;
+}
+
