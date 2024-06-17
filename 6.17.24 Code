@@ -1,0 +1,72 @@
+// ConsoleApplication5.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+// return type, function name, (any parameters it takes in case)
+void welcome();
+int addition(int x, int y);
+int subtraction(int x, int y);
+int multiplication(int x, int y);
+double division(double x, double y);
+void thankyou();
+
+//Step 2: Define the function
+void welcome() {
+    cout << "Welcome to our calculator app" << endl;
+}
+
+int addition(int x, int y) {
+    int result = x + y;
+    cout << "The result of addition is: " << result;
+    return result;
+}
+
+int subtraction(int x, int y) {
+    int result = x - y;
+    cout << "\nThe result of subtraction is: " << result;
+    return result;
+}
+
+int multiplication(int x, int y) {
+    int result = x * y;
+    cout << "\nThe result of multiplication is: " << result;
+    return result;
+}
+
+double division(double x, double y) {
+    double result = x / y;
+    cout << "\nThe result of division is: " << result;
+    return result;
+}
+
+void thankyou() {
+    cout << "\nThank you for using my calculator app" << endl;
+}
+
+int main()
+{
+    int x, y, result;
+    welcome();
+    cout << "Please enter the first number: ";
+    cin >> x;
+    cout << "Please enter the second number: ";
+    cin >> y;
+    addition(x,y);
+    subtraction(x, y);
+    multiplication(x, y);
+    division(x, y);
+    thankyou();
+
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
