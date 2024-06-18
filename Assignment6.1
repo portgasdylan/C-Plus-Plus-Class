@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdlib> // for rand() and srand()
+#include <ctime>   // for time()
+
+using namespace std;
+
+// Function prototypes
+void welcome();
+int getRandomNumber();
+int getUserGuess();
+bool checkGuess(int guess, int target);
+void thankYou();
+
+int main() {
+    welcome(); // Call the welcome function to greet the user
+    
+    int target = getRandomNumber(); // Generate a random number for the user to guess
+    bool guessedCorrectly = false;  // Flag to indicate if the user has guessed correctly
+
+    // Main game loop
+    while (!guessedCorrectly) {
+        int guess = getUserGuess();    // Get the user's guess
+        guessedCorrectly = checkGuess(guess, target); // Check the user's guess
+    }
+
+    thankYou(); // Call the thank you function to end the game
+    return 0;
+}
+
+// Function to display a welcome message
+void welcome() {
+    cout << "Welcome to the Number Guessing Game!" << endl;
+    cout << "I have selected a number between 1 and 100. Try to guess it!" << endl;
+}
+
+// Function to generate and return a random number between 1 and 100
+int getRandomNumber() {
+    srand(static_cast<unsigned int>(time(0))); // Seed the random number generator with the current time
+    return rand() % 100 + 1; // Generate a random number between 1 and 100
+}
+
+// Function to prompt the user for a guess and return it
+int getUserGuess() {
+    int guess;
+    cout << "Enter your guess: ";
+    cin >> guess;
+    return guess;
+}
+
+// Function to check if the user's guess is correct, too high, or too low
+bool checkGuess(int guess, int target) {
+    if (guess < target) {
+        cout << "Too low! Try again." << endl;
+        return false; // Guess is too low
+    } else if (guess > target) {
+        cout << "Too high! Try again." << endl;
+        return false; // Guess is too high
+    } else {
+        cout << "Congratulations! You guessed the number!" << endl;
+        return true; // Guess is correct
+    }
+}
+
+// Function to display a thank you message
+void thankYou() {
+    cout << "Thank you for playing the Number Guessing Game!" << endl;
+}
