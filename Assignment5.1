@@ -1,84 +1,165 @@
-// This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream> //Library for I/O Operations
 #include <Windows.h> // Library for WIndow-specific funtions / beep
-#include <ctime> // Library for random number generation
-#include <cstdlib> // Library for seeding random number generation
-
 using namespace std;
-
-
-//Function fror bell
-void ringBell() {
-    Beep(1000, 1000); // Frequency of 1000 Hz for 1 second
-}
-
 int main()
 {
-    // Seed the random number generator
-    srand(static_cast<unsigned int>(time(0)));
+    //vars
+    int guess;
+    char playAgain;
 
-    // Array of 10 UAT professors
-    string professors[10] = {
-        "Professor Battana",
-        "Professor Belanger",
-        "Professor Brokaw",
-        "Professor Clark",
-        "Professor Crusoe",
-        "Professor Habib",
-        "Professor Hinton",
-        "Professor Peters",
-        "Professor Portillo",
-        "Professor Vosteen"
-    };
+    //Array of professors 
+    const int numProfessors = 10;
+    string professorArray[numProfessors] = { "Dr.Brendly-Clark","Mr.Habib","Mrs.Crusoe","Mr.Hreshchyshyn","Mrs.Peters","Dr.Brokaw","Mr.Sinca-Williams","Dr.Pike","Mr.Clark","Mrs.Valenzuela" };
 
-    const int numClassrooms = 20;
-    int proffesorClassroms = [10];
-
-    bool keepRunning = true;
-
-    while (keepRunning) {
-        cout << "Welcome to the UAT Classroom Simulation!\n";
-
-        // Ask the user to guess which professor will visit their classroom
-        int professorIndex;
-        cout << "Enter the number of the professor you want to guess for (1-10):";
-        cin >> professorIndex;
-
-        int userGuess;
-        cout << "Guess which classroom " << professors[professorIndex - 1] << " will be in (Enter a number between 1 and 20): ";
-        cin >> userGuess;
-
-        // Ring the bell to signal the end of the classroom portion of the tour
-        cout << "Time to see if you're right!\n";
-        ringBell();
-
-        for (int i = 0; i < 10; ++i) {
-            professorClassrooms[i] = rand() % numClassrooms;
-        }
-
-        if (userGuess - 1 == professorClassrooms[professorIndex-1]) {
-            cout << "You guessed correctly! ";
-        } else {
-            cout << "Sorry that professor wasn't there. "
-        }
-
-
-
-        // Ask the user if they want to run the simulation again
-        char userChoice;
-        cout << "\nWould you like to run the simulation again? (y/n): ";
-        cin >> userChoice;
-
-        if (userChoice != 'y' && userChoice != 'Y') {
-            keepRunning = false;
-        }
-
-        cout << endl; 
+    //state who they are in order
+    for (int i = 0; i < 10; i++)
+    {
+        cout << professorArray[i] << " " << endl;
     }
+    //run the game until the player wants to stop
+    while (true)
+    {
+        //play ten times
+        for (int i = 0; i < 10; i++)
+        {
+            //ask user to select a professor
+            cout << "Enter a number between 1 and 10 to choose a professor!" << endl;
+            int professorIndex;
+            cin >> professorIndex;
 
-    cout << "Thank you for visiting UAT! Goodbye.\n";
-    return 0;
+            //select the professor correctly
+            string visitingProfessor = professorArray[professorIndex - 1];
+            string hypotheticalProfessor = professorArray[rand() % numProfessors];
+            if (hypotheticalProfessor == visitingProfessor)
+            {
+                hypotheticalProfessor = professorArray[rand() % numProfessors];
+            }
+
+            //restate selected professor, enable guessing
+            cout << "Guess where " << visitingProfessor << " will visit! Select a number between 1 and 20." << endl;
+            cin >> guess;
+
+            //random number generator picks professor room from pool of 1-20
+            int answer = rand() % 20 + 1;
+
+            //generate a random number out of 20 for other professors to occupy
+            int otherProf_1 = rand() % 20 + 1;
+            if (otherProf_1 == answer)
+            {
+                otherProf_1 = rand() % 20 + 1;
+                if (otherProf_1 == answer)
+                {
+                    otherProf_1 = rand() % 20 + 1;
+                }
+            }
+            //second
+            int otherProf_2 = rand() % 20 + 1;
+            if (otherProf_2 == answer || otherProf_2 == otherProf_1)
+            {
+                otherProf_2 = rand() % 20 + 1;
+                if (otherProf_2 == answer || otherProf_2 == otherProf_1)
+                {
+                    otherProf_2 = rand() % 20 + 1;
+                }
+            }
+            //third
+            int otherProf_3 = rand() % 20 + 1;
+            if (otherProf_3 == answer || otherProf_3 == otherProf_2 || otherProf_3 == otherProf_1)
+            {
+                otherProf_3 = rand() % 20 + 1;
+                while (otherProf_3 == answer || otherProf_3 == otherProf_2 || otherProf_3 == otherProf_1)
+                {
+                    otherProf_3 = rand() % 20 + 1;
+                }
+            }
+            //fourth
+            int otherProf_4 = rand() % 20 + 1;
+            if (otherProf_4 == answer || otherProf_4 == otherProf_3 || otherProf_4 == otherProf_2 || otherProf_4 == otherProf_1)
+            {
+                otherProf_4 = rand() % 20 + 1;
+                while (otherProf_4 == answer || otherProf_4 == otherProf_3 || otherProf_4 == otherProf_2 || otherProf_4 == otherProf_1)
+                {
+                    otherProf_4 = rand() % 20 + 1;
+                }
+            }
+            //fifth
+            int otherProf_5 = rand() % 20 + 1;
+            if (otherProf_5 == answer || otherProf_5 == otherProf_4 || otherProf_5 == otherProf_3 || otherProf_5 == otherProf_2 || otherProf_5 == otherProf_1)
+            {
+                otherProf_5 = rand() % 20 + 1;
+                while (otherProf_5 == answer || otherProf_5 == otherProf_4 || otherProf_5 == otherProf_3 || otherProf_5 == otherProf_2 || otherProf_5 == otherProf_1)
+                {
+                    otherProf_5 = rand() % 20 + 1;
+                }
+            }
+            //sixth
+            int otherProf_6 = rand() % 20 + 1;
+            if (otherProf_6 == answer || otherProf_6 == otherProf_5 || otherProf_6 == otherProf_4 || otherProf_6 == otherProf_3 || otherProf_6 == otherProf_2 || otherProf_6 == otherProf_1)
+            {
+                otherProf_6 = rand() % 20 + 1;
+                while (otherProf_6 == answer || otherProf_6 == otherProf_5 || otherProf_6 == otherProf_4 || otherProf_6 == otherProf_3 || otherProf_6 == otherProf_2 || otherProf_6 == otherProf_1)
+                {
+                    otherProf_6 = rand() % 20 + 1;
+                }
+            }
+            //seventh
+            int otherProf_7 = rand() % 20 + 1;
+            if (otherProf_7 == answer || otherProf_7 == otherProf_6 || otherProf_7 == otherProf_5 || otherProf_7 == otherProf_4 || otherProf_7 == otherProf_3 || otherProf_7 == otherProf_2 || otherProf_7 == otherProf_1)
+            {
+                otherProf_7 = rand() % 20 + 1;
+                while (otherProf_7 == answer || otherProf_7 == otherProf_6 || otherProf_7 == otherProf_5 || otherProf_7 == otherProf_4 || otherProf_7 == otherProf_3 || otherProf_7 == otherProf_2 || otherProf_7 == otherProf_1)
+                {
+                    otherProf_7 = rand() % 20 + 1;
+                }
+            }
+            //eighth
+            int otherProf_8 = rand() % 20 + 1;
+            if (otherProf_8 == answer || otherProf_8 == otherProf_7 || otherProf_8 == otherProf_6 || otherProf_8 == otherProf_5 || otherProf_8 == otherProf_4 || otherProf_8 == otherProf_3 || otherProf_8 == otherProf_2 || otherProf_8 == otherProf_1)
+            {
+                otherProf_8 = rand() % 20 + 1;
+                while (otherProf_8 == answer || otherProf_8 == otherProf_7 || otherProf_8 == otherProf_6 || otherProf_8 == otherProf_5 || otherProf_8 == otherProf_4 || otherProf_8 == otherProf_3 || otherProf_8 == otherProf_2 || otherProf_8 == otherProf_1)
+                {
+                    otherProf_8 = rand() % 20 + 1;
+                }
+            }
+            //ninth; total of ten occupied rooms, no repeats
+            int otherProf_9 = rand() % 20 + 1;
+            if (otherProf_9 == answer || otherProf_9 == otherProf_8 || otherProf_9 == otherProf_7 || otherProf_9 == otherProf_6 || otherProf_9 == otherProf_5 || otherProf_9 == otherProf_4 || otherProf_9 == otherProf_3 || otherProf_9 == otherProf_2 || otherProf_9 == otherProf_1)
+            {
+                otherProf_9 = rand() % 20 + 1;
+                while (otherProf_9 == answer || otherProf_9 == otherProf_8 || otherProf_9 == otherProf_7 || otherProf_9 == otherProf_6 || otherProf_9 == otherProf_5 || otherProf_9 == otherProf_4 || otherProf_9 == otherProf_3 || otherProf_9 == otherProf_2 || otherProf_9 == otherProf_1)
+                {
+                    otherProf_9 = rand() % 20 + 1;
+                }
+            }
+
+            //compare values to see if user was right or wrong
+            if (guess == answer)
+            {
+                //call user impressive for winning a 1/20 guessing game 
+                cout << "Good job! You were right! " << visitingProfessor << " is there!" << endl;
+                Beep(500, 1000);//hertz, milliseconds
+            }
+            else if (guess == otherProf_1 || guess == otherProf_2 || guess == otherProf_3 || guess == otherProf_4 || guess == otherProf_5 || guess == otherProf_6 || guess == otherProf_7 || guess == otherProf_8 || guess == otherProf_9)
+            {
+                //state they chose a winning room
+                cout << "They weren't there, but " << hypotheticalProfessor << " was!" << endl;
+                Beep(500, 1000);//hertz, milliseconds
+            }
+            else
+            {
+                //state goal number and other ppassing numbers
+                cout << "Better luck next time... " << visitingProfessor << " in classroom " << answer << endl;
+                cout << "Other professors were in " << otherProf_1 << ", " << otherProf_2 << ", " << otherProf_3 << ", " << otherProf_4 << ", " << otherProf_5 << ", " << otherProf_6 << ", " << otherProf_7 << ", " << otherProf_8 << ", " << otherProf_9 << endl;
+                Beep(500, 1000);//hertz, milliseconds
+            }
+        }
+        //after 10 plays, ask user if they want to continue
+        cout << "The classroom part of the trip is over. Visit again? (Y/N) (Please use lowercase)" << endl;
+        cin >> playAgain;
+        if (playAgain == 'n')
+        {
+            break;
+        }
+    }
 }
-
