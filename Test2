@@ -1,0 +1,98 @@
+// ConsoleApplication2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+// Dylan Maxwell
+// Enhanced Classroom Simulation Code
+// 6.3.24
+
+#include <iostream> // Standard library for input-output operations
+#include <Windows.h> // Library for Windows-specific functions like Beep
+#include <cstdlib> // Library for random number generation
+#include <ctime> // Library for seeding the random number generator
+using namespace std; // Using the standard namespace to avoid prefixing std::
+
+// Function to ring the bell
+void ringBell() {
+    Beep(1000, 1000); // Frequency of 1000 Hz for 1 second
+}
+
+int main() {
+    // Seed the random number generator
+    srand(static_cast<unsigned int>(time(0)));
+
+    // Array of 10 UAT professors
+    string professors[10] = {
+        "Professor Smith",
+        "Professor Johnson",
+        "Professor Williams",
+        "Professor Jones",
+        "Professor Brown",
+        "Professor Davis",
+        "Professor Miller",
+        "Professor Wilson",
+        "Professor Moore",
+        "Professor Taylor"
+    };
+
+    const int numClassrooms = 20; // Total number of classrooms
+    int professorClassrooms[10]; // Array to store the classrooms of the 10 professors
+
+    bool keepRunning = true;
+
+    while (keepRunning) {
+        // Welcome message for the prospective student
+        cout << "Welcome to the UAT Classroom Simulation!\n";
+
+        // Ask the user to guess the classroom number for a specific professor
+        int professorIndex;
+        cout << "Enter the number of the professor you want to guess for (1-10): ";
+        cin >> professorIndex;
+
+        // Validate user input
+        if (professorIndex < 1 || professorIndex > 10) {
+            cout << "Invalid input. Please enter a number between 1 and 10.\n";
+            continue;
+        }
+
+        int userGuess;
+        cout << "Guess which classroom " << professors[professorIndex - 1] << " will be in (Enter a number between 1 and 20): ";
+        cin >> userGuess;
+
+        // Assign professors to classrooms randomly
+        for (int i = 0; i < 10; ++i) {
+            professorClassrooms[i] = rand() % numClassrooms;
+        }
+
+        // Evaluate the user's guess
+        if (userGuess - 1 == professorClassrooms[professorIndex - 1]) {
+            cout << "Congratulations! You guessed correctly! " << professors[professorIndex - 1] << " is in classroom " << userGuess << ".\n";
+        } else {
+            cout << "Sorry, your guess was incorrect. " << professors[professorIndex - 1] << " is in classroom " << professorClassrooms[professorIndex - 1] + 1 << ".\n";
+        }
+
+        // Ring the bell to signal the end of the classroom portion of the tour
+        cout << "The class is over. Ringing the bell...\n";
+        ringBell();
+
+        // Display the current classroom assignments
+        cout << "\nCurrent classroom assignments:\n";
+        for (int i = 0; i < 10; ++i) {
+            cout << professors[i] << " is in classroom " << professorClassrooms[i] + 1 << endl;
+        }
+
+        // Ask the user if they want to run the simulation again
+        char userChoice;
+        cout << "Would you like to run the simulation again? (y/n): ";
+        cin >> userChoice;
+
+        if (userChoice != 'y' && userChoice != 'Y') {
+            keepRunning = false;
+        }
+
+        cout << endl; // Add a blank line for better readability between runs
+    }
+
+    // Goodbye message
+    cout << "Thank you for visiting UAT! Goodbye.\n";
+    return 0;
+}
+    
