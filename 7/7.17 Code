@@ -1,0 +1,62 @@
+// ConsoleApplication7.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <vector>
+#include <list>
+#include <algorithm>
+using namespace std;
+//Iterators are used to traverse elements of a contianer like vectors, list, etc
+int main() 
+{
+    //using iterators with a vector
+    vector<int> vec = { 10,20,30,40,50 };
+    // declare an iterator for the vector
+    vector<int>::iterator it;
+    // traversing the vectro using the iterator
+    cout << "Vector elements: " << endl;
+    for (it = vec.begin(); it != vec.end(); ++it) {
+        cout << *it << " ";
+    }
+    // modifying vector elements using iterator
+    for (it = vec.begin(); it != vec.end(); ++it) {
+        *it += 10; // *it = *it +10
+    }
+    cout << "\nVector Elements after being modified: " << endl;
+    for (it = vec.begin(); it != vec.end(); ++it) {
+        cout << *it << " ";
+    }
+    // using reverse iterator with the vector
+    cout << "\nVector elements in reverse: " << endl;
+    vector<int>::reverse_iterator rit;
+    for (rit = vec.rbegin(); rit != vec.rend(); ++rit) {
+        cout << *rit << " ";
+    }
+    // using iterators with lists
+    list<string> strList = { "apple", "banana" , "cherry", "blueberry" };
+    //delcare iterator for the list
+    list<string>::iterator listIt;
+    //traverse the list using the iterato
+    cout << "\nList Elements: " << endl;
+    for (listIt = strList.begin(); listIt != strList.end(); ++listIt) {
+        cout << *listIt << " ";
+    }
+    //modifying list elements using iterator
+    for (listIt = strList.begin(); listIt != strList.end(); ++listIt) {
+        *listIt = "fruit";
+    }
+    //traverse the modifies list
+    cout << "\nList elements after being modified: " << endl;
+    for (listIt = strList.begin(); listIt 
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
