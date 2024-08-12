@@ -1,0 +1,79 @@
+// ConsoleApplication12.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+
+class Human {
+
+//Making private = using abstraction
+private:
+    string name;
+    int age;
+    int IdNumber;
+
+public:
+    Human(string name, int age, int IdNumber) {
+        this->name = name;
+        this->age = age;
+        this->IdNumber = IdNumber;
+    }
+
+    //Create setters and getters
+    void setName(string setName) {
+        name = setName;
+    }
+    string getName() {
+        cout << name << endl;
+        return name;
+    }
+    void setAge(int setAge) {
+        age = setAge;
+    }
+    int getAge() {
+        cout << age << endl;
+        return age;
+    }
+    void setIdNumber(int setIdNumber) {
+        IdNumber = setIdNumber;
+    }
+    int getIdNumber() {
+        cout << IdNumber << endl;
+        return IdNumber;
+    }
+
+    void breath() {
+        cout << "Breath" << endl;
+    }
+    void eat() {
+        cout << "Eat" << endl;
+    }
+    void walk() {
+        cout << "Walk" << endl;
+    }
+};
+
+int main()
+{
+    Human human1("Mike", 20, 123);
+    human1.breath();
+    human1.eat();
+    human1.walk();
+    Human human2("Marie", 25, 658);
+    human2.breath();
+    human2.getName();
+    human2.getAge();
+    human2.setName("Michelle");
+    human2.getName();
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
