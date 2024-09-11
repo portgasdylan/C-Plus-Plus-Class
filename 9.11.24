@@ -1,0 +1,74 @@
+// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+//Polymorphism
+#include <iostream>
+using namespace std;
+//Class Definition
+//Base Class
+class Animal {
+public:
+    // Method to display type of animal
+    void displayType() {
+        cout << "I am an animal!" << endl;
+    }
+    // Method that can be overridden by derived classes
+    void sound() {
+        cout << "Animals make sounds!" << endl;
+    }
+};
+// Derived class
+class Dog : public Animal {
+public:
+    // Methods specifically to Dog class
+    void displayType() {
+        cout << "I am a dog!" << endl;
+    }
+    void sound() {
+        cout << "Dogs Bark" << endl;
+    }
+};
+class Cat : public Animal {
+public:
+    void displayType() {
+        cout << "I am a cat!" << endl;
+    }
+    void sound() {
+        cout << "Cats meow" << endl;
+    }
+};
+class Rat : public Animal {
+public:
+    void displayType() {
+        cout << "I am a rat!" << endl;
+    }
+    void sound() {
+        cout << "Rats scurry" << endl;
+    }
+};
+
+int main()
+{
+    Animal animal1;
+    animal1.displayType();
+    animal1.sound();
+    Dog dog1;
+    dog1.displayType();
+    dog1.sound();
+    Cat cat1;
+    cat1.displayType();
+    cat1.sound();
+    Rat rat1;
+    rat1.displayType();
+    rat1.sound();
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
